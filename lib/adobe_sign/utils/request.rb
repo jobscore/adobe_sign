@@ -24,7 +24,20 @@ module AdobeSign
         response = HTTParty.post(endpoint, query: body, headers: headers)
         puts(response)
 
-        JSON.parse(response.body)
+        format_response(response)
+      end
+
+      private
+
+      def self.format_response(response)
+        OpenStruct.new(
+          status: self.status_code_symbol(response.code),
+          data: JSON.parse(response.body).with_indifferent_access
+        )
+      end
+
+      def self.status_code_symbol(status_code)
+        Rack::Utils::SYMBOL_TO_STATUS_CODE.key(status_code)
       end
     end
   end

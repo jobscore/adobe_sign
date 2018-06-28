@@ -13,5 +13,6 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
 
   s.add_dependency 'json'
+  s.add_dependency 'rack'
   s.add_dependency 'httparty'
 end
