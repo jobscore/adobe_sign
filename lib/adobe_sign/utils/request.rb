@@ -3,18 +3,17 @@ require 'httparty'
 module AdobeSign
   module Utils
     module Request
-
-      API_VERSION_PATH = '/api/rest/v6'
-
-      def self.endpoint(base_uri, path)
-        base_uri + API_VERSION_PATH + path
-      end
-
       def self.get(endpoint, headers = {})
-        HTTParty.get(
+        puts "endpoint: #{endpoint}"
+        puts "headers: #{headers}"
+
+        response = HTTParty.get(
           endpoint,
           headers: headers
         )
+        puts(response)
+
+        format_response(response)
       end
 
       def self.post(endpoint, body = {}, headers = {})
