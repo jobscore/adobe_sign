@@ -31,7 +31,7 @@ module AdobeSign
       def self.format_response(response)
         OpenStruct.new(
           status: self.status_code_symbol(response.code),
-          data: JSON.parse(response.body) #.with_indifferent_access
+          data: JSON.parse(response.body).with_indifferent_access
         )
       end
 
