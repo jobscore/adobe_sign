@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.na2.echosign.com/api/rest/v6/users
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer VALID_TOKEN
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 03 Jul 2018 19:17:15 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - a28cdfb7-3cb7-4b35-a5d3-e994429afcb4
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Length:
+      - '192'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"userInfoList":[{"email":"test@jobscore.com","company":"Jobscore","id":"USER_ID","firstName":"User","lastName":"Name","isAccountAdmin":true}],"page":{}}'
+    http_version:
+  recorded_at: Tue, 03 Jul 2018 19:17:15 GMT
+recorded_with: VCR 4.0.0

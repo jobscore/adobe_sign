@@ -1,6 +1,5 @@
 module AdobeSign
   class Authentication
-
     ENDPOINT = '/oauth/token'
 
     attr_accessor :base_path
@@ -18,7 +17,7 @@ module AdobeSign
         grant_type: 'authorization_code'
       }
 
-      AdobeSign::Utils::Request::post(@base_path + ENDPOINT, query)
+      AdobeSign::Utils::Request.post(@base_path + ENDPOINT, query)
     end
   end
 end

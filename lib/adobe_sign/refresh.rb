@@ -1,6 +1,5 @@
 module AdobeSign
   class Refresh
-
     ENDPOINT = 'oauth/refresh'
 
     attr_accessor :base_path
@@ -17,7 +16,7 @@ module AdobeSign
         grant_type: 'refresh_token'
       }
 
-      AdobeSign::Utils::Request::post(@base_path + ENDPOINT, query)
+      AdobeSign::Utils::Request.post(@base_path + ENDPOINT, query)
     end
   end
 end

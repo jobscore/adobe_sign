@@ -4,24 +4,24 @@ module AdobeSign
   module Utils
     module Request
       def self.get(endpoint, headers = {})
-        puts "endpoint: #{endpoint}"
-        puts "headers: #{headers}"
+        # puts "endpoint: #{endpoint}"
+        # puts "headers: #{headers}"
 
         response = HTTParty.get(
           endpoint,
           headers: headers
         )
-        puts(response)
+        # puts(response)
 
         format_response(response)
       end
 
       def self.post(endpoint, body = {}, headers = {})
-        puts "endpoint: #{endpoint}"
-        puts "body: #{body.to_s}"
+        # puts "endpoint: #{endpoint}"
+        # puts "body: #{body.to_s}"
 
         response = HTTParty.post(endpoint, query: body, headers: headers)
-        puts(response)
+        # puts(response)
 
         format_response(response)
       end
