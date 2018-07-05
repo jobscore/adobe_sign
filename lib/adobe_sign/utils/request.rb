@@ -1,4 +1,4 @@
-require 'httparty'
+require 'httmultiparty'
 
 module AdobeSign
   module Utils
@@ -17,11 +17,25 @@ module AdobeSign
       end
 
       def self.post(endpoint, body = {}, headers = {})
+        response = HTTMultiParty.post(endpoint, query: body, headers: headers)
+        format_response(response)
+      end
+
+      def self.post_multiparty(endpoint, body = {}, headers = {})
         # puts "endpoint: #{endpoint}"
         # puts "body: #{body.to_s}"
 
-        response = HTTParty.post(endpoint, query: body, headers: headers)
+        response = HTTMultiParty.post(endpoint, query: body, headers: headers)
         # puts(response)
+
+        format_response(response)
+      end
+
+      def self.post_json(endpoint, body = {}, headers = {})
+        headers['Content-Type'] = 'application/json'
+
+        response = HTTMultiParty.post(endpoint, body: body.to_json, headers: headers)
+        puts(response)
 
         format_response(response)
       end

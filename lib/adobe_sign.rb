@@ -9,3 +9,5 @@ require 'adobe_sign/authentication'
 require 'adobe_sign/refresh'
 
 require 'adobe_sign/users'
+require 'adobe_sign/documents'
+require 'adobe_sign/agreements'

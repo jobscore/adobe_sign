@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'json'
   s.add_dependency 'rack'
-  s.add_dependency 'httparty'
+  s.add_dependency 'httmultiparty'
   s.add_dependency 'activesupport'
 
   s.add_development_dependency 'bundler', '~> 1.16'
