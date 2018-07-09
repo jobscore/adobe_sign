@@ -35,7 +35,7 @@ module AdobeSign
         headers['Content-Type'] = 'application/json'
 
         response = HTTMultiParty.post(endpoint, body: body.to_json, headers: headers)
-        puts(response)
+        # puts(response)
 
         format_response(response)
       end
