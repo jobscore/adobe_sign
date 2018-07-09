@@ -17,7 +17,7 @@ module AdobeSign
       end
 
       def self.post(endpoint, body = {}, headers = {})
-        response = HTTMultiParty.post(endpoint, query: body, headers: headers)
+        response = HTTParty.post(endpoint, query: body, headers: headers)
         format_response(response)
       end
 
