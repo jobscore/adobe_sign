@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/SOME_AGREEMENT_ID
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer VALID_ACESSS_TOKEN
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 19:01:22 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - 2a3af541-b2ff-4ce1-a09f-30ad8447bff8
+      Etag:
+      - VALID_ETAG_VALUE
+      Content-Length:
+      - '455'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"id":"SOME_AGREEMENT_ID","name":"Document Title","participantSetsInfo":[{"memberInfos":[{"email":"signer@jobscore.com","securityOption":{"authenticationMethod":"NONE"}}],"role":"SIGNER","order":1}],"senderEmail":"sender@jobscore.com","createdDate":"2018-07-10T21:43:57Z","signatureType":"ESIGN","locale":"en_US","status":"IN_PROCESS","documentVisibilityEnabled":false}'
+    http_version:
+  recorded_at: Wed, 11 Jul 2018 19:01:22 GMT
+- request:
+    method: put
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/SOME_AGREEMENT_ID/state
+    body:
+      encoding: UTF-8
+      string: '{"state":"AUTHORING"}'
+    headers:
+      Authorization:
+      - Bearer VALID_ACESSS_TOKEN
+      If-Match:
+      - VALID_ETAG_VALUE
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 19:47:55 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - db94db76-1054-4a0c-b3e0-b348d4fe247d
+      Etag:
+      - NEW_ETAG_VALUE
+      Content-Length:
+      - '0'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Wed, 11 Jul 2018 19:47:56 GMT
+recorded_with: VCR 4.0.0

@@ -3,7 +3,7 @@ require 'httmultiparty'
 module AdobeSign
   module Utils
     module Request
-      def self.get(endpoint, headers = {})
+      def self.get(endpoint, headers = {}, full = false)
         # puts "endpoint: #{endpoint}"
         # puts "headers: #{headers}"
 
@@ -11,9 +11,8 @@ module AdobeSign
           endpoint,
           headers: headers
         )
-        # puts(response)
 
-        format_response(response)
+        format_response(response, full)
       end
 
       def self.post(endpoint, body = {}, headers = {})
@@ -40,13 +39,27 @@ module AdobeSign
         format_response(response)
       end
 
+      def self.put_json(endpoint, body = {}, headers = {})
+        headers['Content-Type'] = 'application/json'
+
+        response = HTTMultiParty.put(endpoint, body: body.to_json, headers: headers)
+        puts(response)
+
+        format_response(response)
+      end
+
       private
 
-      def self.format_response(response)
-        OpenStruct.new(
-          status: self.status_code_symbol(response.code),
-          data: JSON.parse(response.body).with_indifferent_access
-        )
+      def self.format_response(response, full = false)
+        body = response.body.present? ? JSON.parse(response.body).with_indifferent_access : {}
+        data = {
+          status: status_code_symbol(response.code),
+          data: body
+        }
+
+        data[:headers] = response.headers.with_indifferent_access if full
+
+        OpenStruct.new(data)
       end
 
       def self.status_code_symbol(status_code)

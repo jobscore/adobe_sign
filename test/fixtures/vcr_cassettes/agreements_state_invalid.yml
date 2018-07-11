@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/SOME_AGREEMENT_ID
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer INVALID_TOKEN
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 19:29:17 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - 00bb2dfb-5861-4a03-82d5-05b03cfe7750
+      Content-Length:
+      - '91'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"code":"INVALID_ACCESS_TOKEN","message":"Access token provided is
+        invalid or has expired"}'
+    http_version: 
+  recorded_at: Wed, 11 Jul 2018 19:29:17 GMT
+- request:
+    method: put
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/SOME_AGREEMENT_ID/state
+    body:
+      encoding: UTF-8
+      string: '{"state":"CANCELLED","agreementCancellationInfo":{"comment":"Some comment","notifyOthers":false}}'
+    headers:
+      Authorization:
+      - Bearer INVALID_TOKEN
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 19:29:18 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - ec3f16fb-e918-458f-b446-d4626a80f9bb
+      Content-Length:
+      - '91'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"code":"INVALID_ACCESS_TOKEN","message":"Access token provided is
+        invalid or has expired"}'
+    http_version: 
+  recorded_at: Wed, 11 Jul 2018 19:29:19 GMT
+recorded_with: VCR 4.0.0

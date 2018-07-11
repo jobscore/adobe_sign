@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.na2.echosign.com/api/rest/v6/agreements/SOME_AGREEMENT_ID/signingUrls
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/UNEXIST_ID
     body:
       encoding: US-ASCII
       string: ''
@@ -11,19 +11,23 @@ http_interactions:
       - Bearer VALID_ACESSS_TOKEN
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       Date:
-      - Mon, 09 Jul 2018 19:00:18 GMT
+      - Wed, 11 Jul 2018 18:47:47 GMT
       Server:
       - Apache
       X-Request-Id:
-      - 86e21d88-a52e-43f1-aa62-8a2fd974a0b8
-      Etag:
-      - VALID_ETAG_VALUE
+      - 3e615aa6-2ca3-4bdb-b770-0f0ad69fe4ee
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       Content-Length:
-      - '278'
+      - '81'
       Strict-Transport-Security:
       - max-age=31536000;
       X-Xss-Protection:
@@ -38,7 +42,8 @@ http_interactions:
       - application/json;charset=UTF-8
     body:
       encoding: UTF-8
-      string: '{"signingUrlSetInfos":[{"signingUrls":[{"email":"test@jobscore.com","esignUrl":"https://secure.na2.echosign.com/public/apiesign?pid=SOME_DOCUMENT_PID"}]}]}'
+      string: '{"code":"INVALID_AGREEMENT_ID","message":"The Agreement ID specified
+        is invalid"}'
     http_version:
-  recorded_at: Mon, 09 Jul 2018 19:00:18 GMT
+  recorded_at: Wed, 11 Jul 2018 18:47:48 GMT
 recorded_with: VCR 4.0.0

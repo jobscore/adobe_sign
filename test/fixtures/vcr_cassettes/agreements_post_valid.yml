@@ -24,7 +24,7 @@ http_interactions:
       X-Request-Id:
       - e630967a-b0e5-4ef4-9bfd-9490e8f84eef
       Etag:
-      - A8dc4f7670b184f948782f41fbd01d9d08194ad7a
+      - NEW_ETAG
       Content-Length:
       - '53'
       Strict-Transport-Security:

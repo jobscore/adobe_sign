@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/UNEXIST_ID
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer VALID_ACESSS_TOKEN
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 19:30:15 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - df303567-f37b-4a04-adf1-26ce496a2b94
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Length:
+      - '81'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"code":"INVALID_AGREEMENT_ID","message":"The Agreement ID specified
+        is invalid"}'
+    http_version:
+  recorded_at: Wed, 11 Jul 2018 19:30:16 GMT
+- request:
+    method: put
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/UNEXIST_ID/state
+    body:
+      encoding: UTF-8
+      string: '{"state":"CANCELLED","agreementCancellationInfo":{"comment":"Some comment","notifyOthers":false}}'
+    headers:
+      Authorization:
+      - Bearer VALID_ACESSS_TOKEN
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 11 Jul 2018 19:30:17 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - f00308d5-d994-4325-a23a-e96fa0d0f60e
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Length:
+      - '81'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"code":"INVALID_AGREEMENT_ID","message":"The Agreement ID specified
+        is invalid"}'
+    http_version:
+  recorded_at: Wed, 11 Jul 2018 19:30:17 GMT
+recorded_with: VCR 4.0.0
