@@ -21,22 +21,38 @@ And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install example-ruby-gem
-
 ## Usage
 
 TODO: Write usage instructions here
 
 ### Authenticate
 
+The API use the standard oAUTH2 to authenticate. Here we skip the basic protocol description, but you can find the usefull commands to initiate the authentication and fetch the access tokens:
+```ruby
+api_client = AdobeSign::Authentication.new('https://secure.na2.echosign.com/oauth/token')
+
+response = api_client.post(
+  'ADOBESIGN_CLIENT_ID',
+  'ADOBESIGN_CLIENT_SECRET',
+  'code',
+  'redirect_uri'
+)
+```
+
+When sucessfull, the response will include these fields that you should store for later requests:
+
+```ruby
+access_token = response.data[:access_token],
+refresh_token = response.data[:refresh_token],
+expires_in = Time.zone.now + response.data[:expires_in]
+```
+
 ### Create an Agreeement
 
 First, create a document with the signature fields
 
 ```ruby
-document_service = AdobeSign::Documents.new(credentials['host'], credentials['access_token'])
+document_service = AdobeSign::Documents.new('https://api.na2.echosign.com/', 'VALID_ACESSS_TOKEN')
 response = document_service.upload(tempfile, 'some_file.docx')
 
 return nil if response.status != :created
@@ -48,29 +64,29 @@ transient_document_id = response.data[:transientDocumentId]
 Then, use the returned `transient_document_id` to create the agreement
 
 ```ruby
-agreement_service = AdobeSign::Agreements.new(credentials['host'], credentials['access_token'])
+agreement_service = AdobeSign::Agreements.new('https://api.na2.echosign.com/', 'VALID_ACESSS_TOKEN')
 
-  # Check API V6 for more attributes to customize the data signature request
-  data = {
-    fileInfos: [{ transientDocumentId: transient_document_id }],
-    name: 'Jobscore Signature Request,
-    participantSetsInfo: [{
-      memberInfos: [{
-        email: 'support@jobscore.com'
-      }],
-      order: 1,
-      role: 'SIGNER'
+# Check API V6 for more attributes to customize the data signature request
+data = {
+  fileInfos: [{ transientDocumentId: transient_document_id }],
+  name: 'Jobscore Signature Request',
+  participantSetsInfo: [{
+    memberInfos: [{
+      email: 'support@jobscore.com'
     }],
-    emailOption: {
-      sendOptions: {
-        completionEmails: 'NONE',
-        inFlightEmails: 'NONE',
-        initEmails: 'NONE'
-      }
-    },
-    signatureType: 'ESIGN',
-    state: 'IN_PROCESS'
-  }
+    order: 1,
+    role: 'SIGNER'
+  }],
+  emailOption: {
+    sendOptions: {
+      completionEmails: 'NONE',
+      inFlightEmails: 'NONE',
+      initEmails: 'NONE'
+    }
+  },
+  signatureType: 'ESIGN',
+  state: 'IN_PROCESS'
+}
 
 response = agreement_service.post(data)
 
@@ -99,13 +115,13 @@ response.data[:signingUrlSetInfos].first[:signingUrls].first[:esignUrl]
 data = {
   state: 'CANCELLED',
   agreementCancellationInfo: {
-    comment: I18n.t('offer.esignatures.cancel_message', ats_user_full_name: @ats_user.full_name),
+    comment: 'Awesome comment',
     notifyOthers: false
   }
 }
 agreement_service.state(agreement_id, data)
 
-[:no_content, :conflict].include?(response.status)
+[:no_content, :conflict].include?(response.status) # no_content => true/success. conclict => already canceled
 ```
 
 ### Update an Agreement
@@ -120,18 +136,18 @@ When the token expire you need to refresh, here is a snippet:
 
 
 ```ruby
-response = AdobeSign::Refresh.new(credentials['host']).post(
-  ENV['ESIGNATURE_ADOBESIGN_CLIENT_ID'],
-  ENV['ESIGNATURE_ADOBESIGN_CLIENT_SECRET'],
-  credentials['refresh_token']
+response = AdobeSign::Refresh.new('https://api.na2.echosign.com/').post(
+  'ADOBESIGN_CLIENT_ID',
+  'ADOBESIGN_CLIENT_SECRET',
+  refresh_token
 )
+```
 
-```ruby
 Then, store the returned data for future requests
 
 ```ruby
-credentials['access_token'] = response.data[:access_token]
-credentials['expires_in'] = Time.zone.now + response.data[:expires_in]
+access_token = response.data[:access_token]
+expires_in = Time.zone.now + response.data[:expires_in]
 ```
 
 ## Contributing
