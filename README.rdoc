@@ -1,1 +1,42 @@
-= AdobeSign
+
+# Jobscore AdobeSign Gem
+
+This gem was made with ❤️ by Jobscore team. Hope you enjoy!
+
+In this repository, you'll find the files you need to be able to package up your integration with AdobeSign REST for v6. While the oficial docs offers a complete guide, we miss a ruby way of building the integration. Althougth we found some other gems public available, they was not updated with the new v6. With this gem we hope to share our learnings and progress using the flavor of AdobeSign digital signature in our plataform.
+
+
+Check the oficial [AdobeSign REST API](http://secure.na2.echosign.com/public/docs/restapi/v6) documentation for further details.
+
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'adobe_sign', github: 'jobscore/adobe_sign'
+```
+
+And then execute:
+
+    $ bundle install
+
+Or install it yourself as:
+
+    $ gem install example-ruby-gem
+
+## Usage
+
+TODO: Write usage instructions here
+
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/jobscore/adobe_sign
+
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+
