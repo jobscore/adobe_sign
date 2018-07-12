@@ -23,8 +23,6 @@ And then execute:
 
 ## Usage
 
-TODO: Write usage instructions here
-
 ### Authenticate
 
 The API use the standard oAUTH2 to authenticate. Here we skip the basic protocol description, but you can find the usefull commands to initiate the authentication and fetch the access tokens:
