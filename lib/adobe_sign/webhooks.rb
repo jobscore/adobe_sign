@@ -13,10 +13,10 @@ module AdobeSign
     end
 
     def delete(webhook_id)
-      custom_headers = headers
-      custom_headers['If-Match'] = etag(webhook_id)
+      etag = etag(webhook_id)
+      headers['If-Match'] = etag if etag.present?
 
-      AdobeSign::Utils::Request.delete(endpoint("/#{webhook_id}"), custom_headers)
+      AdobeSign::Utils::Request.delete(endpoint("/#{webhook_id}"), headers)
     end
 
     def etag(webhook_id)

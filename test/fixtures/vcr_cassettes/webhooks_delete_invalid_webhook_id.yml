@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.na2.echosign.com/api/rest/v6/webhooks/WEBHOOK_ID
+    uri: https://api.na2.echosign.com/api/rest/v6/webhooks/INVALID_WEBHOOK_ID
     body:
       encoding: US-ASCII
       string: ''
@@ -11,19 +11,23 @@ http_interactions:
       - Bearer VALID_TOKEN
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
       Date:
-      - Fri, 20 Jul 2018 19:51:21 GMT
+      - Fri, 20 Jul 2018 20:25:56 GMT
       Server:
       - Apache
       X-Request-Id:
-      - 3e23108c-15f0-494a-a2b2-505611214e7d
-      Etag:
-      - Aede23bbca5c69c0baecd8f23dc046b56ae372610
+      - be1aea89-30ef-4419-bb26-979bea946371
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       Content-Length:
-      - '564'
+      - '78'
       Strict-Transport-Security:
       - max-age=31536000;
       X-Xss-Protection:
@@ -38,38 +42,40 @@ http_interactions:
       - application/json;charset=UTF-8
     body:
       encoding: UTF-8
-      string: '{"id":"WEBHOOK_ID","name":"E-signatures","scope":"ACCOUNT","webhookUrlInfo":{"url":"https://e7970257.ngrok.io/api/private/adobesign"},"status":"ACTIVE","webhookSubscriptionEvents":["AGREEMENT_ALL"],"webhookConditionalParams":{"webhookAgreementEvents":{"includeSignedDocuments":false,"includeParticipantsInfo":false,"includeDocumentsInfo":false,"includeDetailedInfo":false}},"applicationDisplayName":"Jobscore
-        Development API","applicationName":"Jobscore Dev","created":"2018-07-20T19:34:36Z","lastModified":"2018-07-20T19:34:35Z"}'
+      string: '{"code":"INVALID_WEBHOOK_ID","message":"The webhook id specified is
+        invalid."}'
     http_version:
-  recorded_at: Fri, 20 Jul 2018 19:51:22 GMT
+  recorded_at: Fri, 20 Jul 2018 20:25:59 GMT
 - request:
     method: delete
-    uri: https://api.na2.echosign.com/api/rest/v6/webhooks/WEBHOOK_ID
+    uri: https://api.na2.echosign.com/api/rest/v6/webhooks/INVALID_WEBHOOK_ID
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Authorization:
       - Bearer VALID_TOKEN
-      If-Match:
-      - Aede23bbca5c69c0baecd8f23dc046b56ae372610
       Content-Type:
       - application/json
   response:
     status:
-      code: 204
-      message: No Content
+      code: 404
+      message: Not Found
     headers:
       Date:
-      - Fri, 20 Jul 2018 19:51:23 GMT
+      - Fri, 20 Jul 2018 20:26:00 GMT
       Server:
       - Apache
       X-Request-Id:
-      - '086ccc54-ab3c-4b93-a5c3-6037b00adc99'
-      Etag:
-      - B69901c1c5f79d124b78edfce7d14937136fe0c74
-      Content-Length:
+      - 45e08cbb-6a0c-4a0e-94b1-d50cecfe6235
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
       - '0'
+      Content-Length:
+      - '78'
       Strict-Transport-Security:
       - max-age=31536000;
       X-Xss-Protection:
@@ -80,9 +86,12 @@ http_interactions:
       - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
     body:
       encoding: UTF-8
-      string: ''
+      string: '{"code":"INVALID_WEBHOOK_ID","message":"The webhook id specified is
+        invalid."}'
     http_version:
-  recorded_at: Fri, 20 Jul 2018 19:51:24 GMT
+  recorded_at: Fri, 20 Jul 2018 20:26:01 GMT
 recorded_with: VCR 4.0.0

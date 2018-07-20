@@ -8,22 +8,20 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer VALID_TOKEN
+      - Bearer INVALID_TOKEN
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Fri, 20 Jul 2018 19:51:21 GMT
+      - Fri, 20 Jul 2018 20:25:54 GMT
       Server:
       - Apache
       X-Request-Id:
-      - 3e23108c-15f0-494a-a2b2-505611214e7d
-      Etag:
-      - Aede23bbca5c69c0baecd8f23dc046b56ae372610
+      - 4d454e8b-5813-42f9-b152-86da2ecb0600
       Content-Length:
-      - '564'
+      - '91'
       Strict-Transport-Security:
       - max-age=31536000;
       X-Xss-Protection:
@@ -38,10 +36,10 @@ http_interactions:
       - application/json;charset=UTF-8
     body:
       encoding: UTF-8
-      string: '{"id":"WEBHOOK_ID","name":"E-signatures","scope":"ACCOUNT","webhookUrlInfo":{"url":"https://e7970257.ngrok.io/api/private/adobesign"},"status":"ACTIVE","webhookSubscriptionEvents":["AGREEMENT_ALL"],"webhookConditionalParams":{"webhookAgreementEvents":{"includeSignedDocuments":false,"includeParticipantsInfo":false,"includeDocumentsInfo":false,"includeDetailedInfo":false}},"applicationDisplayName":"Jobscore
-        Development API","applicationName":"Jobscore Dev","created":"2018-07-20T19:34:36Z","lastModified":"2018-07-20T19:34:35Z"}'
+      string: '{"code":"INVALID_ACCESS_TOKEN","message":"Access token provided is
+        invalid or has expired"}'
     http_version:
-  recorded_at: Fri, 20 Jul 2018 19:51:22 GMT
+  recorded_at: Fri, 20 Jul 2018 20:25:54 GMT
 - request:
     method: delete
     uri: https://api.na2.echosign.com/api/rest/v6/webhooks/WEBHOOK_ID
@@ -50,26 +48,22 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - Bearer VALID_TOKEN
-      If-Match:
-      - Aede23bbca5c69c0baecd8f23dc046b56ae372610
+      - Bearer INVALID_TOKEN
       Content-Type:
       - application/json
   response:
     status:
-      code: 204
-      message: No Content
+      code: 401
+      message: Unauthorized
     headers:
       Date:
-      - Fri, 20 Jul 2018 19:51:23 GMT
+      - Fri, 20 Jul 2018 20:25:55 GMT
       Server:
       - Apache
       X-Request-Id:
-      - '086ccc54-ab3c-4b93-a5c3-6037b00adc99'
-      Etag:
-      - B69901c1c5f79d124b78edfce7d14937136fe0c74
+      - 06e97148-234b-4f86-8a0a-cf3fcd3ee9ed
       Content-Length:
-      - '0'
+      - '91'
       Strict-Transport-Security:
       - max-age=31536000;
       X-Xss-Protection:
@@ -80,9 +74,12 @@ http_interactions:
       - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
     body:
       encoding: UTF-8
-      string: ''
+      string: '{"code":"INVALID_ACCESS_TOKEN","message":"Access token provided is
+        invalid or has expired"}'
     http_version:
-  recorded_at: Fri, 20 Jul 2018 19:51:24 GMT
+  recorded_at: Fri, 20 Jul 2018 20:25:55 GMT
 recorded_with: VCR 4.0.0
