@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/SOME_AGREEMENT_ID/documents
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer VALID_ACESSS_TOKEN
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 20 Jul 2018 16:48:30 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - 1ab6d3b5-0555-4fbc-8999-8da5f692ff69
+      Etag:
+      - SOME_ETAG_ID
+      Content-Length:
+      - '236'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"documents":[{"id":"SOME_DOCUMENT_ID","name":"some_file.pdf","mimeType":"application/pdf","numPages":1}]}'
+    http_version:
+  recorded_at: Fri, 20 Jul 2018 16:48:34 GMT
+recorded_with: VCR 4.0.0

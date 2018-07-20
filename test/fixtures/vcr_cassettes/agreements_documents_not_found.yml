@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/UNEXIST_ID/documents
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer VALID_ACESSS_TOKEN
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 20 Jul 2018 17:02:23 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - 020b09bb-801a-49fd-ab15-180df5c48011
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
+      Content-Length:
+      - '81'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"code":"INVALID_AGREEMENT_ID","message":"The Agreement ID specified is invalid"}'
+    http_version:
+  recorded_at: Fri, 20 Jul 2018 17:02:23 GMT
+recorded_with: VCR 4.0.0

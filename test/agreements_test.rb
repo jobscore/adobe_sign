@@ -206,5 +206,85 @@ describe 'Agreements Token Test' do
         assert_equal 'VALID_ETAG_VALUE', AdobeSign::Agreements.new(base_path, token).etag(agreement_id)
       end
     end
+
+    describe '#documents' do
+      it 'should response a valid data when parameters is send properly' do
+        VCR.use_cassette('agreements_documents_valid') do
+          response = AdobeSign::Agreements.new(base_path, token).documents(agreement_id)
+
+          response_data = {
+            'documents' => [{
+              'id' => 'SOME_DOCUMENT_ID',
+              'name' => 'some_file.pdf',
+              'mimeType' => 'application/pdf',
+              'numPages' => 1
+            }]
+          }
+
+          assert_equal :ok, response.status
+          assert_equal response_data, response.data
+        end
+      end
+
+      it 'should return response not_found when id is not exists at AdobeSign' do
+        agreement_id = 'UNEXIST_ID'
+
+        VCR.use_cassette('agreements_documents_not_found') do
+          response = AdobeSign::Agreements.new(base_path, token).documents(agreement_id)
+
+          assert_equal :not_found, response.status
+          assert_equal 'INVALID_AGREEMENT_ID', response.data['code']
+          assert_equal 'The Agreement ID specified is invalid', response.data['message']
+        end
+      end
+
+      it 'should return response error when parameters is not send properly' do
+        token = 'INVALID_TOKEN'
+
+        VCR.use_cassette('agreements_documents_invalid') do
+          response = AdobeSign::Agreements.new(base_path, token).documents(agreement_id)
+
+          assert_equal :unauthorized, response.status
+          assert_equal 'INVALID_ACCESS_TOKEN', response.data['code']
+          assert_equal 'Access token provided is invalid or has expired', response.data['message']
+        end
+      end
+    end
+
+    describe '#document' do
+      it 'should return a file when document id exists for the agreement' do
+        document_id = 'SOME_DOCUMENT_ID'
+        tempfile = nil
+
+        begin
+          VCR.use_cassette('agreements_document_valid') do
+            tempfile = AdobeSign::Agreements.new(base_path, token).document(agreement_id, document_id)
+
+            assert_instance_of Tempfile, tempfile
+            assert_equal 67_689, File.size(tempfile)
+            assert_equal '.pdf', File.extname(tempfile)
+          end
+        ensure
+          tempfile.try(:unlink)
+        end
+      end
+
+      it 'should return nil when document id is not exists for the agreement' do
+        document_id = 'UNEXIST_DOCUMENT_ID'
+
+        VCR.use_cassette('agreements_document_not_found') do
+          assert_nil AdobeSign::Agreements.new(base_path, token).document(agreement_id, document_id)
+        end
+      end
+
+      it 'should return nil when parameters is not send properly' do
+        token = 'INVALID_TOKEN'
+        document_id = 'SOME_DOCUMENT_ID'
+
+        VCR.use_cassette('agreements_document_invalid') do
+          assert_nil AdobeSign::Agreements.new(base_path, token).document(agreement_id, document_id)
+        end
+      end
+    end
   end
 end
