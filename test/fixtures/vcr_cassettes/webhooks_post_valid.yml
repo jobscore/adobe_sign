@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.na2.echosign.com/api/rest/v6/webhooks
+    body:
+      encoding: UTF-8
+      string: '{"name":"E-signatures","scope":"ACCOUNT","state":"ACTIVE","webhookSubscriptionEvents":["AGREEMENT_ALL"],"webhookUrlInfo":{"url":"https://webhook.url/adobesign"}}'
+    headers:
+      Authorization:
+      - Bearer VALID_TOKEN
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Fri, 20 Jul 2018 19:34:34 GMT
+      Server:
+      - Apache
+      X-Request-Id:
+      - 732b7a65-0a6d-4cef-8826-48e6b339b138
+      Etag:
+      - Aede23bbca5c69c0baecd8f23dc046b56ae372610
+      Location:
+      - https://api.na2.echosign.com/api/rest/v6/webhooks/CBJCHBCAABAACELRPAve9uNaqTnfZYY-uUyxtF5aG_DJ
+      Content-Length:
+      - '53'
+      Strict-Transport-Security:
+      - max-age=31536000;
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Robots-Tag:
+      - none
+      P3p:
+      - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: '{"id":"WEBHOOK_ID"}'
+    http_version:
+  recorded_at: Fri, 20 Jul 2018 19:34:37 GMT
+recorded_with: VCR 4.0.0

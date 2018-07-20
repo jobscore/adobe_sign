@@ -48,6 +48,15 @@ module AdobeSign
         format_response(response)
       end
 
+      def self.delete(endpoint, headers = {})
+        headers['Content-Type'] = 'application/json'
+
+        response = HTTParty.delete(endpoint, headers: headers)
+        # puts(response)
+
+        format_response(response)
+      end
+
       private
 
       def self.format_response(response, full = false)
