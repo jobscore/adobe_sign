@@ -12,6 +12,10 @@ module AdobeSign
       AdobeSign::Utils::Request.get(endpoint("/#{webhook_id}"), headers, full)
     end
 
+    def list
+      AdobeSign::Utils::Request.get(endpoint, headers)
+    end
+
     def delete(webhook_id)
       etag = etag(webhook_id)
       headers['If-Match'] = etag if etag.present?
