@@ -4,12 +4,23 @@ module AdobeSign
   module Utils
     module Request
       def self.get(endpoint, headers = {}, full = false)
-        response = HTTParty.get(
-          endpoint,
-          headers: headers
-        )
-
+        response = HTTParty.get(endpoint, headers: headers)
         format_response(response, full)
+      end
+
+      def self.get_file(endpoint, headers = {}, filename = 'download')
+        response = HTTParty.get(endpoint, headers: headers)
+
+        return nil unless status_code_symbol(response.code) == :ok
+
+        extension = content_type_extension(response.headers['content-type'])
+        return nil if extension.blank?
+
+        tempfile = Tempfile.new([filename, extension])
+        tempfile.binmode
+        tempfile.write(response.body)
+        tempfile.rewind
+        tempfile
       end
 
       def self.post(endpoint, body = {}, headers = {})
@@ -48,6 +59,15 @@ module AdobeSign
       end
 
       private
+
+      def self.content_type_extension(content_type)
+        extension = nil
+        content_type.split(';').each do |mime_type|
+          extension ||= Rack::Mime::MIME_TYPES.invert[mime_type]
+        end
+
+        extension
+      end
 
       def self.format_response(response, full = false)
         body = response.body.present? ? JSON.parse(response.body).try(:with_indifferent_access) || {} : {}

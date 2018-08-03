@@ -18,8 +18,8 @@ describe 'Webhooks Test' do
     it 'should return response error when parameters are not sent properly' do
       token = 'INVALID_TOKEN'
 
-      VCR.use_cassette('webhooks_post_invalid') do
-        response = AdobeSign::Agreements.new(base_path, token).post(data)
+      VCR.use_cassette('webhooks_post_invalid', record: :all) do
+        response = AdobeSign::Webhooks.new(base_path, token).post(data)
 
         assert_equal :unauthorized, response.status
         assert_equal 'INVALID_ACCESS_TOKEN', response.data['code']
@@ -33,6 +33,45 @@ describe 'Webhooks Test' do
         response_data = { 'id' => 'WEBHOOK_ID' }
 
         assert_equal :created, response.status
+        assert_equal response_data, response.data
+      end
+    end
+  end
+
+  describe '#list' do
+    it 'should return response error when parameters are not sent properly' do
+      token = 'INVALID_TOKEN'
+
+      VCR.use_cassette('webhooks_list_invalid') do
+        response = AdobeSign::Webhooks.new(base_path, token).list
+
+        assert_equal :unauthorized, response.status
+        assert_equal 'INVALID_ACCESS_TOKEN', response.data['code']
+        assert_equal 'Access token provided is invalid or has expired', response.data['message']
+      end
+    end
+
+    it 'response a valid webhook_id when parameters is send properly' do
+      VCR.use_cassette('webhooks_list_valid') do
+        response = AdobeSign::Webhooks.new(base_path, token).list
+        response_data = HashWithIndifferentAccess.new({
+          userWebhookList: [{
+            applicationName: 'Jobscore Dev',
+            applicationDisplayName: 'Jobscore Development API',
+            id: 'WEBHOOK_ID',
+            lastModified: '2018-07-23T19:33:57Z',
+            name: 'Test',
+            scope: 'ACCOUNT',
+            webhookSubscriptionEvents: ['AGREEMENT_ALL'],
+            webhookUrlInfo: {
+              url: 'https://webhook.url/adobesign'
+            },
+            status: 'ACTIVE'
+          }],
+          page:{}
+        })
+
+        assert_equal :ok, response.status
         assert_equal response_data, response.data
       end
     end

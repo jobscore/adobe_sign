@@ -27,5 +27,13 @@ module AdobeSign
       data = get(agreement_id, true)
       data.status == :ok ? data.headers[:etag].try(:first) : nil
     end
+
+    def documents(agreement_id)
+      AdobeSign::Utils::Request.get(endpoint("/#{agreement_id}/documents"), headers)
+    end
+
+    def document(agreement_id, document_id)
+      AdobeSign::Utils::Request.get_file(endpoint("/#{agreement_id}/documents/#{document_id}"), headers)
+    end
   end
 end
