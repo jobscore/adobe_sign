@@ -4,9 +4,6 @@ module AdobeSign
   module Utils
     module Request
       def self.get(endpoint, headers = {}, full = false)
-        # puts "endpoint: #{endpoint}"
-        # puts "headers: #{headers}"
-
         response = HTTParty.get(endpoint, headers: headers)
         format_response(response, full)
       end
@@ -32,11 +29,7 @@ module AdobeSign
       end
 
       def self.post_multiparty(endpoint, body = {}, headers = {})
-        # puts "endpoint: #{endpoint}"
-        # puts "body: #{body.to_s}"
-
         response = HTTMultiParty.post(endpoint, query: body, headers: headers)
-        # puts(response)
 
         format_response(response)
       end
@@ -45,7 +38,6 @@ module AdobeSign
         headers['Content-Type'] = 'application/json'
 
         response = HTTMultiParty.post(endpoint, body: body.to_json, headers: headers)
-        # puts(response)
 
         format_response(response)
       end
@@ -54,7 +46,6 @@ module AdobeSign
         headers['Content-Type'] = 'application/json'
 
         response = HTTMultiParty.put(endpoint, body: body.to_json, headers: headers)
-        puts(response)
 
         format_response(response)
       end
@@ -63,7 +54,6 @@ module AdobeSign
         headers['Content-Type'] = 'application/json'
 
         response = HTTParty.delete(endpoint, headers: headers)
-        # puts(response)
 
         format_response(response)
       end
@@ -80,7 +70,7 @@ module AdobeSign
       end
 
       def self.format_response(response, full = false)
-        body = response.body.present? ? JSON.parse(response.body).with_indifferent_access : {}
+        body = response.body.present? ? JSON.parse(response.body).try(:with_indifferent_access) || {} : {}
         data = {
           status: status_code_symbol(response.code),
           data: body
