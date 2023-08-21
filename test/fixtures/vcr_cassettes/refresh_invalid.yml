@@ -2,28 +2,40 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.na2.echosign.com/oauth/refresh?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&grant_type=refresh_token&refresh_token=INVALID_REFRESH_TOKEN
+    uri: https://api.na2.echosign.com/oauth/refresh
     body:
       encoding: UTF-8
-      string: ''
-    headers: {}
+      string: client_id=CLIENT_ID&client_secret=CLIENT_SECRET&grant_type=refresh_token&refresh_token=INVALID_REFRESH_TOKEN
+    headers:
+      User-Agent:
+      - Faraday v2.7.10
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Mon, 02 Jul 2018 21:46:24 GMT
+      - Mon, 21 Aug 2023 13:50:34 GMT
       Server:
       - Apache
+      X-Robots-Tag:
+      - none
+      Cache-Control:
+      - no-store
+      Pragma:
+      - no-cache
       Strict-Transport-Security:
-      - max-age=31536000;
+      - max-age=31536000; includeSubDomains;
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      X-Robots-Tag:
-      - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Transfer-Encoding:
@@ -33,6 +45,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"error_description":"invalid refresh token","error":"invalid_request"}'
-    http_version:
-  recorded_at: Mon, 02 Jul 2018 21:46:24 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Mon, 21 Aug 2023 13:50:34 GMT
+recorded_with: VCR 6.2.0
