@@ -1,17 +1,17 @@
-require 'httmultiparty'
+require 'faraday'
 
 module AdobeSign
   module Utils
     module Request
       def self.get(endpoint, headers = {}, full = false)
-        response = HTTParty.get(endpoint, headers: headers)
+        response = Faraday.get(endpoint, nil, headers)
         format_response(response, full)
       end
 
       def self.get_file(endpoint, headers = {}, filename = 'download')
-        response = HTTParty.get(endpoint, headers: headers)
+        response = Faraday.get(endpoint, nil, headers)
 
-        return nil unless status_code_symbol(response.code) == :ok
+        return nil unless status_code_symbol(response.status) == :ok
 
         extension = content_type_extension(response.headers['content-type'])
         return nil if extension.blank?
@@ -24,12 +24,12 @@ module AdobeSign
       end
 
       def self.post(endpoint, body = {}, headers = {})
-        response = HTTParty.post(endpoint, query: body, headers: headers)
+        response = Faraday.post(endpoint, body, headers)
         format_response(response)
       end
 
       def self.post_multiparty(endpoint, body = {}, headers = {})
-        response = HTTMultiParty.post(endpoint, query: body, headers: headers)
+        response = Faraday.post(endpoint, body, headers)
 
         format_response(response)
       end
@@ -37,7 +37,7 @@ module AdobeSign
       def self.post_json(endpoint, body = {}, headers = {})
         headers['Content-Type'] = 'application/json'
 
-        response = HTTMultiParty.post(endpoint, body: body.to_json, headers: headers)
+        response = Faraday.post(endpoint, body.to_json, headers)
 
         format_response(response)
       end
@@ -45,7 +45,7 @@ module AdobeSign
       def self.put_json(endpoint, body = {}, headers = {})
         headers['Content-Type'] = 'application/json'
 
-        response = HTTMultiParty.put(endpoint, body: body.to_json, headers: headers)
+        response = Faraday.put(endpoint, body.to_json, headers)
 
         format_response(response)
       end
@@ -53,7 +53,7 @@ module AdobeSign
       def self.delete(endpoint, headers = {})
         headers['Content-Type'] = 'application/json'
 
-        response = HTTParty.delete(endpoint, headers: headers)
+        response = Faraday.delete(endpoint, nil, headers)
 
         format_response(response)
       end
@@ -71,8 +71,9 @@ module AdobeSign
 
       def self.format_response(response, full = false)
         body = response.body.present? ? JSON.parse(response.body).try(:with_indifferent_access) || {} : {}
+        # binding.pry
         data = {
-          status: status_code_symbol(response.code),
+          status: status_code_symbol(response.status),
           data: body
         }
 

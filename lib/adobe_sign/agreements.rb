@@ -25,7 +25,7 @@ module AdobeSign
 
     def etag(agreement_id)
       data = get(agreement_id, true)
-      data.status == :ok ? data.headers[:etag].try(:first) : nil
+      data.status == :ok ? data.headers[:etag] : nil
     end
 
     def documents(agreement_id)
