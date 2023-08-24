@@ -7,29 +7,41 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - Faraday v2.7.10
       Authorization:
       - Bearer INVALID_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Mon, 09 Jul 2018 19:00:17 GMT
+      - Thu, 24 Aug 2023 15:16:53 GMT
       Server:
       - Apache
+      X-Robots-Tag:
+      - none
       X-Request-Id:
-      - a776a01f-52cf-40a5-8eef-eaeef856a6b5
+      - 1d5aa00a-fa01-42bf-917b-5812eb683bf9
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       Content-Length:
       - '91'
       Strict-Transport-Security:
-      - max-age=31536000;
+      - max-age=31536000; includeSubDomains;
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      X-Robots-Tag:
-      - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Content-Type:
@@ -38,6 +50,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"code":"INVALID_ACCESS_TOKEN","message":"Access token provided is
         invalid or has expired"}'
-    http_version:
-  recorded_at: Mon, 09 Jul 2018 19:00:17 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Thu, 24 Aug 2023 15:16:53 GMT
+recorded_with: VCR 6.2.0

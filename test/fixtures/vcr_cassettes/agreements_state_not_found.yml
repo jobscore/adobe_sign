@@ -2,24 +2,32 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.na2.echosign.com/api/rest/v6/agreements/UNEXIST_ID
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/UNEXISTENT_ID
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - Faraday v2.7.10
       Authorization:
-      - Bearer VALID_ACESSS_TOKEN
+      - Bearer VALID_ACCESS_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 404
       message: Not Found
     headers:
       Date:
-      - Wed, 11 Jul 2018 19:30:15 GMT
+      - Thu, 24 Aug 2023 14:58:51 GMT
       Server:
       - Apache
+      X-Robots-Tag:
+      - none
       X-Request-Id:
-      - df303567-f37b-4a04-adf1-26ce496a2b94
+      - b5b08aa2-f1f1-47b0-9a90-0da24c0357b2
       Cache-Control:
       - no-cache, no-store, must-revalidate
       Pragma:
@@ -29,13 +37,11 @@ http_interactions:
       Content-Length:
       - '81'
       Strict-Transport-Security:
-      - max-age=31536000;
+      - max-age=31536000; includeSubDomains;
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      X-Robots-Tag:
-      - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Content-Type:
@@ -44,30 +50,37 @@ http_interactions:
       encoding: UTF-8
       string: '{"code":"INVALID_AGREEMENT_ID","message":"The Agreement ID specified
         is invalid"}'
-    http_version:
-  recorded_at: Wed, 11 Jul 2018 19:30:16 GMT
+  recorded_at: Thu, 24 Aug 2023 14:58:51 GMT
 - request:
     method: put
-    uri: https://api.na2.echosign.com/api/rest/v6/agreements/UNEXIST_ID/state
+    uri: https://api.na2.echosign.com/api/rest/v6/agreements/UNEXISTENT_ID/state
     body:
       encoding: UTF-8
       string: '{"state":"CANCELLED","agreementCancellationInfo":{"comment":"Some comment","notifyOthers":false}}'
     headers:
+      User-Agent:
+      - Faraday v2.7.10
       Authorization:
-      - Bearer VALID_ACESSS_TOKEN
+      - Bearer VALID_ACCESS_TOKEN
       Content-Type:
       - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 404
       message: Not Found
     headers:
       Date:
-      - Wed, 11 Jul 2018 19:30:17 GMT
+      - Thu, 24 Aug 2023 14:58:52 GMT
       Server:
       - Apache
+      X-Robots-Tag:
+      - none
       X-Request-Id:
-      - f00308d5-d994-4325-a23a-e96fa0d0f60e
+      - 1b3699c7-7422-45ad-a9de-e134d5db8644
       Cache-Control:
       - no-cache, no-store, must-revalidate
       Pragma:
@@ -77,13 +90,11 @@ http_interactions:
       Content-Length:
       - '81'
       Strict-Transport-Security:
-      - max-age=31536000;
+      - max-age=31536000; includeSubDomains;
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      X-Robots-Tag:
-      - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Content-Type:
@@ -92,6 +103,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"code":"INVALID_AGREEMENT_ID","message":"The Agreement ID specified
         is invalid"}'
-    http_version:
-  recorded_at: Wed, 11 Jul 2018 19:30:17 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Thu, 24 Aug 2023 14:58:52 GMT
+recorded_with: VCR 6.2.0

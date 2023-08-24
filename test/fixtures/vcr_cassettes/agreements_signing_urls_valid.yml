@@ -7,38 +7,49 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - Faraday v2.7.10
       Authorization:
-      - Bearer VALID_ACESSS_TOKEN
+      - Bearer VALID_ACCESS_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Mon, 09 Jul 2018 19:00:18 GMT
+      - Thu, 24 Aug 2023 14:57:33 GMT
       Server:
       - Apache
+      X-Robots-Tag:
+      - none
       X-Request-Id:
-      - 86e21d88-a52e-43f1-aa62-8a2fd974a0b8
+      - f5185d5d-9cfd-4ac9-8233-a0ddb88d927a
       Etag:
-      - VALID_ETAG_VALUE
+      - 6603AB1BB8039648194ACA8E736B7E1.4A54BEA3B2C9984B8CC06A6D5711FA2
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       Content-Length:
-      - '278'
+      - '298'
       Strict-Transport-Security:
-      - max-age=31536000;
+      - max-age=31536000; includeSubDomains;
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      X-Robots-Tag:
-      - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Content-Type:
       - application/json;charset=UTF-8
     body:
       encoding: UTF-8
-      string: '{"signingUrlSetInfos":[{"signingUrls":[{"email":"test@jobscore.com","esignUrl":"https://secure.na2.echosign.com/public/apiesign?pid=SOME_DOCUMENT_PID"}]}]}'
-    http_version:
-  recorded_at: Mon, 09 Jul 2018 19:00:18 GMT
-recorded_with: VCR 4.0.0
+      string: '{"signingUrlSetInfos":[{"signingUrls":[{"email":"test@jobscore.com","esignUrl":"https://secure.na2.echosign.com/public/apiesign?pid=CBFCIBAA3AAABLblqZhAEeiJF1A6-t7B294SGh6CUIo6jqT04LkYoFeaSCNwsQuZQeAwDlhAPH8lbeY9VJWdIvlYforqvh4KnsnJhVFUV&client_id=CLIENT_ID"}]}]}'
+  recorded_at: Thu, 24 Aug 2023 14:57:33 GMT
+recorded_with: VCR 6.2.0
