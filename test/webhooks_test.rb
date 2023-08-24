@@ -18,7 +18,7 @@ describe 'Webhooks Test' do
     it 'should return response error when parameters are not sent properly' do
       token = 'INVALID_TOKEN'
 
-      VCR.use_cassette('webhooks_post_invalid', record: :all) do
+      VCR.use_cassette('webhooks_post_invalid') do
         response = AdobeSign::Webhooks.new(base_path, token).post(data)
 
         assert_equal :unauthorized, response.status
