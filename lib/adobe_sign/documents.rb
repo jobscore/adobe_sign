@@ -1,3 +1,5 @@
+require 'marcel'
+
 module AdobeSign
   class Documents < Utils::Endpoint
     def base
@@ -5,12 +7,16 @@ module AdobeSign
     end
 
     def upload(file, name)
-      query = {
-        'File-Name' => name,
-        'File' => file
-      }
+      AdobeSign::Utils::Request.post_multipart(endpoint, build_body(file, name), headers)
+    end
 
-      AdobeSign::Utils::Request.post_multiparty(endpoint, query, headers)
+    private
+
+    def build_body(file, name)
+      content_type = Marcel::MimeType.for(file)
+      file_part = Faraday::Multipart::FilePart.new(file, content_type, name)
+
+      { File: file_part, 'File-Name': name }
     end
   end
 end
