@@ -15,6 +15,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'json'
   s.add_dependency 'rack'
   s.add_dependency 'faraday'
+  s.add_dependency 'faraday-multipart'
+  s.add_dependency 'marcel'
   s.add_dependency 'activesupport'
 
   s.add_development_dependency 'bundler'

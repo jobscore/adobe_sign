@@ -7,29 +7,41 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - Faraday v2.7.10
       Authorization:
       - Bearer INVALID_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Wed, 11 Jul 2018 19:29:17 GMT
+      - Thu, 24 Aug 2023 14:58:53 GMT
       Server:
       - Apache
+      X-Robots-Tag:
+      - none
       X-Request-Id:
-      - 00bb2dfb-5861-4a03-82d5-05b03cfe7750
+      - 95f43a52-3dbb-47d5-a047-a566de228d70
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       Content-Length:
       - '91'
       Strict-Transport-Security:
-      - max-age=31536000;
+      - max-age=31536000; includeSubDomains;
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      X-Robots-Tag:
-      - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Content-Type:
@@ -38,8 +50,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"code":"INVALID_ACCESS_TOKEN","message":"Access token provided is
         invalid or has expired"}'
-    http_version: 
-  recorded_at: Wed, 11 Jul 2018 19:29:17 GMT
+  recorded_at: Thu, 24 Aug 2023 14:58:53 GMT
 - request:
     method: put
     uri: https://api.na2.echosign.com/api/rest/v6/agreements/SOME_AGREEMENT_ID/state
@@ -47,31 +58,43 @@ http_interactions:
       encoding: UTF-8
       string: '{"state":"CANCELLED","agreementCancellationInfo":{"comment":"Some comment","notifyOthers":false}}'
     headers:
+      User-Agent:
+      - Faraday v2.7.10
       Authorization:
       - Bearer INVALID_TOKEN
       Content-Type:
       - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 401
       message: Unauthorized
     headers:
       Date:
-      - Wed, 11 Jul 2018 19:29:18 GMT
+      - Thu, 24 Aug 2023 14:58:54 GMT
       Server:
       - Apache
+      X-Robots-Tag:
+      - none
       X-Request-Id:
-      - ec3f16fb-e918-458f-b446-d4626a80f9bb
+      - e9ae0c39-40de-4293-a4c8-c63df1dc9490
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       Content-Length:
       - '91'
       Strict-Transport-Security:
-      - max-age=31536000;
+      - max-age=31536000; includeSubDomains;
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      X-Robots-Tag:
-      - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Content-Type:
@@ -80,6 +103,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"code":"INVALID_ACCESS_TOKEN","message":"Access token provided is
         invalid or has expired"}'
-    http_version: 
-  recorded_at: Wed, 11 Jul 2018 19:29:19 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Thu, 24 Aug 2023 14:58:54 GMT
+recorded_with: VCR 6.2.0

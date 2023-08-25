@@ -1,4 +1,5 @@
 require 'faraday'
+require 'faraday/multipart'
 
 module AdobeSign
   module Utils
@@ -28,8 +29,11 @@ module AdobeSign
         format_response(response)
       end
 
-      def self.post_multiparty(endpoint, body = {}, headers = {})
-        response = Faraday.post(endpoint, body, headers)
+      def self.post_multipart(endpoint, body = {}, headers = {})
+        connection = Faraday.new do |builder|
+          builder.request :multipart
+        end
+        response = connection.post(endpoint, body, headers)
 
         format_response(response)
       end

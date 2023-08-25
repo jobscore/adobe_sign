@@ -7,40 +7,52 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      User-Agent:
+      - Faraday v2.7.10
       Authorization:
-      - Bearer VALID_ACESSS_TOKEN
+      - Bearer VALID_ACCESS_TOKEN
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 11 Jul 2018 19:01:22 GMT
+      - Thu, 24 Aug 2023 14:58:54 GMT
       Server:
       - Apache
+      X-Robots-Tag:
+      - none
       X-Request-Id:
-      - 2a3af541-b2ff-4ce1-a09f-30ad8447bff8
+      - c1a29ef2-6915-4fcb-9c6f-193fb92c2f95
       Etag:
       - VALID_ETAG_VALUE
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - '0'
       Content-Length:
-      - '455'
+      - '912'
       Strict-Transport-Security:
-      - max-age=31536000;
+      - max-age=31536000; includeSubDomains;
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      X-Robots-Tag:
-      - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Content-Type:
       - application/json;charset=UTF-8
     body:
       encoding: UTF-8
-      string: '{"id":"SOME_AGREEMENT_ID","name":"Document Title","participantSetsInfo":[{"memberInfos":[{"email":"signer@jobscore.com","securityOption":{"authenticationMethod":"NONE"}}],"role":"SIGNER","order":1}],"senderEmail":"sender@jobscore.com","createdDate":"2018-07-10T21:43:57Z","signatureType":"ESIGN","locale":"en_US","status":"IN_PROCESS","documentVisibilityEnabled":false}'
-    http_version:
-  recorded_at: Wed, 11 Jul 2018 19:01:22 GMT
+      string: '{"id":"SOME_AGREEMENT_ID","name":"[DEMO
+        USE ONLY] Document Title","type":"AGREEMENT","participantSetsInfo":[{"id":"CBJCHBCAABAAS25HO6HnpyLmhwG9EB8-p7lrQ1DCUP4z","memberInfos":[{"email":"test@jobscore.com","id":"CBJCHBCAABAAJC95866p5BBF3-TwPAGaUC3U8PldzsaC","securityOption":{"authenticationMethod":"NONE"}}],"role":"SIGNER","order":1}],"senderEmail":"sender@jobscore.com","createdDate":"2023-08-24T14:56:06Z","lastEventDate":"2023-08-24T14:58:50Z","signatureType":"ESIGN","locale":"en_US","status":"CANCELLED","documentVisibilityEnabled":false,"hasFormFieldData":false,"hasSignerIdentityReport":false,"agreementSettingsInfo":{"canEditFiles":true,"canEditElectronicSeals":true,"canEditAgreementSettings":true,"showAgreementReminderSentEvents":false,"hipaaEnabled":false,"showDocumentsViewedEvents":false},"sendType":"REGULAR_SEND","senderSigns":"NEVER","documentRetentionApplied":false}'
+  recorded_at: Thu, 24 Aug 2023 14:58:54 GMT
 - request:
     method: put
     uri: https://api.na2.echosign.com/api/rest/v6/agreements/SOME_AGREEMENT_ID/state
@@ -48,23 +60,31 @@ http_interactions:
       encoding: UTF-8
       string: '{"state":"CANCELLED","agreementCancellationInfo":{"comment":"Some comment","notifyOthers":false}}'
     headers:
+      User-Agent:
+      - Faraday v2.7.10
       Authorization:
-      - Bearer 3AAABLblqZhCkOiiCwsRObXeNF6EI6REia4vn2ANQfc_T6egaIusv0p5sTth_34_cR084uYX-TI-SkPSRdyZCbfPc3K_ijKiA
+      - Bearer VALID_ACCESS_TOKEN
       If-Match:
-      - E6c812975b5515244bd75b8d50ce9a86ce333e73a
+      - VALID_ETAG_VALUE
       Content-Type:
       - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 409
       message: Conflict
     headers:
       Date:
-      - Wed, 11 Jul 2018 19:33:21 GMT
+      - Thu, 24 Aug 2023 14:58:55 GMT
       Server:
       - Apache
+      X-Robots-Tag:
+      - none
       X-Request-Id:
-      - '096c2379-07d9-4e84-90f8-8cbdfc2942c9'
+      - e56fcd28-d20b-4b63-8422-b392e1b0382a
       Cache-Control:
       - no-cache, no-store, must-revalidate
       Pragma:
@@ -74,13 +94,11 @@ http_interactions:
       Content-Length:
       - '107'
       Strict-Transport-Security:
-      - max-age=31536000;
+      - max-age=31536000; includeSubDomains;
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
       - nosniff
-      X-Robots-Tag:
-      - none
       P3p:
       - CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
       Content-Type:
@@ -89,6 +107,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"code":"AGREEMENT_ALREADY_CANCELLED","message":"The agreement being
         modified has already been cancelled."}'
-    http_version:
-  recorded_at: Wed, 11 Jul 2018 19:33:21 GMT
-recorded_with: VCR 4.0.0
+  recorded_at: Thu, 24 Aug 2023 14:58:55 GMT
+recorded_with: VCR 6.2.0
